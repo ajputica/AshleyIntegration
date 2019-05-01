@@ -1,56 +1,89 @@
-import java.util.Scanner;
+import java.util.Random;
 
-// AshleyPanem
-// This is a cohesive program that entails a big combination of my programming exercises and coding. 
-// variable is a name for a location in memory
-// scope is a variable is only accessible in the method where it was declared
 public class Main {
+    public static void main(String[] args) {
 
-  public static void main(String[] args) {
-    System.out.println("" +
-        "Java build-in data types: \n" +
-        "byte: 8-bit signed \n" +
-        "short: 16-bit signed \n" +
-        "int: 32-bit signed \n" +
-        "long: 64-bit signed \n" +
-        "float: 32-bit IEEE 754 floating point \n" +
-        "double: 64-bit IEEE 754 floating point \n" +
-        "boolean: bit value true/false \n" +
-        "char: 16-bit unicode \n" +
-        "Object: base class for any  other data type, instances held in heap\n" +
-        "String : immutable character string\n"
-    );
+        //Call a method "concatenate" with 2 arguments
+        String concatenated = concatenate("This string will be extended in a method.", "Extensiion.");
 
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Enter your name in:");
-    System.out.println("Greetings, " + sc.nextLine());
+        //Using Random
+        int randomFrom0To100 = new Random().nextInt(100);
+        //Using Math
+        double sqrtFromRandom = Math.sqrt((double) randomFrom0To100);
 
-    //Usage of variables
-    boolean isMale = true;
-    int age = 19;
-    double weight = 73.5;
-    String name = "Mike";
-    System.out.println("Defined body measurments of " + name + " with variables, " + (isMale ? "male, " : "female, ") + age + "years old, weighting " + weight);
+        //Using if-else
+        if (sqrtFromRandom > 10) {
+            System.out.println("Square is more than 10");
+        } else {
+            System.out.println("Square is not more than 10");
+        }
 
-    System.out.println("Variable is a location to store some data associated with given name. Data can be referenced by name instead of memory address");
-    System.out.println(
-        "Scope is context of the code execution, where some variable names are defined and reachable. " +
-            "Variables defined in one scope could not be reached from other independend scope"
-    );
+        //Using trinary
+        System.out.println("Square is " + (sqrtFromRandom > 10 ? "more" : "not more") + " than 10");
 
-    // Value of final variable could not be changed during program execution.
-    final String passportId = "ABCD1235";
-    // Following line will not work
-    // passportId = "FAKE1234"
+        int randomFrom0To10 = new Random().nextInt(10);
+        switch (randomFrom0To10) {
+            case 0:
+                System.out.println("Number is 0");
+                break;
+            case 1:
+            case 2:
+            case 3:
+                System.out.println("Number is 1-3");
+            default:
+                System.out.println("Number is 4-9");
+        }
 
-    //// casting is when you assign a larger type to a smaller type
-    //Only close data types could be casted
-    int weightFullKgs = (int) weight;
-    // Following line will not work
-    // int weightFromString = (int)"FAKE1234";
+        String first = new String("test");
+        String second = new String("test");
 
-    System.out.println(
-        "This text is written \n as single String, \r but separated with escape sequences."
-        );
+        System.out.println("Comparing strings with == returns " + first == second + ", because they are different objects");
+        System.out.println("Comparing strings with .equals returns " + first.equals(second) + ", because the content is the same");
+
+        //Usage of +, -, *, /, %, ++, --, +=
+        int sum = 1 + 2;
+        int diff = 10 - 5;
+        double mul = 1.1 * 2.2;
+        double div = 2.5 / 0.5;
+        int remaining = 13 % 10;
+        int increment = ++sum;
+        int decrement = --diff;
+        sum += 5;
+
+        //Usage of relational operators
+        boolean gt = 5 > 10;
+        boolean gte = 10 >= 10;
+        boolean lt = 5 < 10;
+        boolean lte = 10 <= 10;
+
+        //Usage of conditional operators
+        boolean trueAndFalse = true && false;
+        boolean trueOrFalse = true || false;
+
+        //operator precedence is folowing: unary increment/decrement, casting, multiplicative, additive, relational, equality, conditional.
+
+        //Usage of loops:
+        int remainaingIterations = 10;
+        while (remainaingIterations > 0){
+            remainaingIterations--;
+            System.out.println("Looping iteration of while-loop");
+        }
+
+        for (int i = 0; i < 10; i++) {
+            if(i ==7){
+                //this loop will be fast-exited if on 7th iteration.
+                break;
+            }
+            if(i == 3){
+                //There will be no statement printed on 3rd iteration, remaining loop body of this iteration is skipped by continue statement.
+                continue;
+            }
+            System.out.println("Looping iteration of for-loop");
+        }
+    }
+
+    //Next line contains method header and parameters
+    public static String concatenate(String first, String second) {
+        return first + second;
     }
 }
